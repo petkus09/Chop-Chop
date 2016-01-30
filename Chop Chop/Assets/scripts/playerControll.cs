@@ -9,6 +9,7 @@ public class playerControll : MonoBehaviour {
 	public ParticleSystem blood;
 	private bool canJump = true;
 	public float maxVelocity = 30;
+    public float stoneCollisionMagnitudeThreshold = 10;
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +19,7 @@ public class playerControll : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-		GetComponent<Rigidbody> ().AddForce (new Vector3 (2,0,0));
+		GetComponent<Rigidbody> ().AddForce (new Vector3 (1,0,0));
 		GetComponent<Rigidbody> ().velocity = Vector3.ClampMagnitude (GetComponent<Rigidbody> ().velocity, maxVelocity);
 		if (Input.GetKeyDown ("up") && canJump == true) {
 			GetComponent<Rigidbody> ().AddForce (new Vector3 (0,1100,0));
@@ -27,17 +28,30 @@ public class playerControll : MonoBehaviour {
 
 	}
 	void OnCollisionEnter(Collision col) {
-		GetComponent<Rigidbody> ().AddForce (new Vector3 (0, 250, 0));
+		GetComponent<Rigidbody> ().AddForce (new Vector3 (0, 150, 0));
 		blood.Emit (30);
 		canJump = true;
-		if (col.gameObject.tag == "vaze") {
+	    float magnitude = col.relativeVelocity.magnitude;
+        if (col.gameObject.tag == "vaze") {
 			Instantiate (Resources.Load ("vazeCrash"), transform.position, transform.rotation);
 			Destroy (col.gameObject);
-			GameObject canvas = GameObject.Find ("score / health Canvas");
-			scoreHealthCanvas script = canvas.GetComponent<scoreHealthCanvas>();
-			script.healthLeft -= 1;
 		}
-	}
+	    if (col.gameObject.tag == "stone")
+	    {
+	        if (magnitude > stoneCollisionMagnitudeThreshold)
+	        {
+	            ParticleSystem stoneParticleSystem = col.gameObject.GetComponent<ParticleSystem>();
+	            if (stoneParticleSystem != null)
+	            {
+	                stoneParticleSystem.Stop();
+                    stoneParticleSystem.Play();
+	            }
+                // DO DAMAGE
+            }
+
+        }
+
+    }
 	 public void OnTriggerEnter(Collider col) {
 		
 		blood.Emit (30);
@@ -46,7 +60,7 @@ public class playerControll : MonoBehaviour {
 		if (col.gameObject.tag == "vaze") {
 			Instantiate (Resources.Load ("vazeCrash"), transform.position, transform.rotation);
 			Destroy (col.gameObject);
-			GameObject canvas = GameObject.Find ("score / health Canvas");
+			GameObject canvas = GameObject.Find ("score _ health Canvas");
 			scoreHealthCanvas script = canvas.GetComponent<scoreHealthCanvas>();
 			script.healthLeft -= 1;
 		}
