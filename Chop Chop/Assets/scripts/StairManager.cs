@@ -9,12 +9,10 @@ public class StairManager : MonoBehaviour {
 	//int maxStepCount = 12;
 	float objWidth = 40f;
 	int x = 0;
-<<<<<<< HEAD
+
 	int itemCount = 7;
 	int half;
-=======
-	int itemCount = 9;
->>>>>>> 687bcfe9d4be78bbaf0afa2ff19ac3dca6e75868
+
 	public GameObject head;
 	void Start () {
 		half = (int)(itemCount / 2) + itemCount % 2;
