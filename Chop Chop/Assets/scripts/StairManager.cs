@@ -22,7 +22,7 @@ public class StairManager : MonoBehaviour {
 
 	void Update () {
 		x = (int)(head.transform.position.x / 1f);
-		y = (int)(head.transform.position.y / 1f);
+
 		//step++;
 		/*foreach (GameObject stair in stairs) {
 			Vector3 pos = stair.transform.position;
@@ -31,12 +31,20 @@ public class StairManager : MonoBehaviour {
 			stair.transform.position = pos;
 		}*/
 		//if (step == maxStepCount) {
+
+		if (x % objWidth == 0) {
 			for (int i = -5; i < 5; i++) {
-			stairs [i + 5].transform.position = new Vector3 (x + objWidth * i, -y - objWidth * i, 0);
+				stairs [i + 5].transform.position = new Vector3 (x + objWidth * i, -x - objWidth * i, 0);
 			}
+		}
+
 			//topStair.transform.position = new Vector3 (5, -5, 0);
 			//stairs.Insert (9, topStair);
 			//step = 0;
 		//}
+	}
+
+	void LateUpdate() {
+
 	}
 }
