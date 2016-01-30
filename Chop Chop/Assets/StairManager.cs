@@ -6,7 +6,7 @@ public class StairManager : MonoBehaviour {
 	public GameObject stair;
 	List<GameObject> stairs;
 	int step = 0;
-	int maxStepCount = 50;
+	int maxStepCount = 120;
 	float objWidth = 6f;
 
 	public GameObject head;
