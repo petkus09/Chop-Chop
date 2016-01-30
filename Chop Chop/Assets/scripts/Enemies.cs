@@ -4,16 +4,10 @@ using System.Collections;
 
 public class Enemies : MonoBehaviour {
 	public List<SingleEnemy> enemies;
-	public GameObject enemy;
 	float objWidth = 1f;
 	public GameObject head;
 	int x = 0;
 	int upFrontDist = 15;
-
-	float nextSpawnTime;
-	public float durationBetweenSpawns = 2f;
-	int lastXSpawn = 0;
-	int minDistBetweenEnemy = 10;
 
 	void Update () {
 
@@ -21,46 +15,14 @@ public class Enemies : MonoBehaviour {
 
 		x = (int)(head.transform.position.x / 1f);
 
-		/*step++;
-		Vector3 pos = enemy.transform.position;
-		pos.x -= objWidth / maxStepCount;
-		pos.y += objWidth / maxStepCount;
-		enemy.transform.position = pos;
- 
-		if (step == maxStepCount * 30) {
-			if (step == maxStepCount * 28) {
-
-				Vector3 poss = enemy.transform.position;
-				poss.x = 16;
-				poss.y = -14;
-				poss.z = Random.Range (-5, 5);
-				enemy.transform.position = poss;
-				step = 0;
-			}
-		}*/
-		/*if (x % objWidth == 0) {
-			if (Time.time > nextSpawnTime && ((x - lastXSpawn) > minDistBetweenEnemy)) {
-				nextSpawnTime = Time.time + durationBetweenSpawns;
-				lastXSpawn = x;
-
-				Vector3 poss = new Vector3 ();
-				poss.x = x + objWidth + upFrontDist;
-				//poss.y = -x - objWidth - upFrontDist + 3;
-				poss.y = -x - objWidth - upFrontDist + 5;
-				//poss.z = Random.Range (-5, 5);
-				poss.z = 10;
-				var a = Instantiate (enemy, poss, Quaternion.Euler (new Vector3 (270, 270, 0)));
-				Destroy (a, 15f);
-			}
-		}*/
-
 		if (x % objWidth == 0) {
-			if (Time.time > nextSpawnTime && ((x - lastXSpawn) > minDistBetweenEnemy)) {
-				nextSpawnTime = Time.time + durationBetweenSpawns;
-				lastXSpawn = x;
+			for (int i = 0; i < enemies.Count; i++) {
+				SingleEnemy se = enemies [i];
 
-				foreach (SingleEnemy se in enemies) {
-					Debug.Log ("a");
+				if (Time.time > se.nextSpawnTime && ((x - se.lastXSpawn) > se.minDistBetweenEnemy)) {
+					se.nextSpawnTime = Time.time + se.durationBetweenSpawns;
+					se.lastXSpawn = x;
+
 					Vector3 poss = new Vector3 ();
 					poss.x = x + objWidth + upFrontDist + se.position.x;
 					poss.y = -x - objWidth - upFrontDist + se.position.y;
@@ -76,11 +38,22 @@ public class Enemies : MonoBehaviour {
 	}
 
 	[System.Serializable]
-	public struct SingleEnemy {
+	public class SingleEnemy {
 		public GameObject prefab;
 		public Vector3 position;
 		public Vector3 rotation;
 		public bool randBetweenStairs;
 
+<<<<<<< HEAD
 }
+=======
+		public float durationBetweenSpawns;
+		public int minDistBetweenEnemy;
+
+		[HideInInspector]
+		public float nextSpawnTime;
+		[HideInInspector]
+		public int lastXSpawn;
+	}
+>>>>>>> a3fbe8514778a76c4964a1b56b3b3f4596334be2
 }
