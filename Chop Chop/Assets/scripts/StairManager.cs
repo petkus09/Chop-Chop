@@ -13,11 +13,7 @@ public class StairManager : MonoBehaviour {
 	int itemCount = 7;
 	int half;
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 796d2416f2c34795eb0b2618d95b863c5328dd62
 	public GameObject head;
 	void Start () {
 		half = (int)(itemCount / 2) + itemCount % 2;

@@ -40,10 +40,7 @@ public class Enemies : MonoBehaviour {
 		public Vector3 position;
 		public Vector3 rotation;
 		public bool randBetweenStairs;
-<<<<<<< HEAD
 
-=======
->>>>>>> 796d2416f2c34795eb0b2618d95b863c5328dd62
 		public float durationBetweenSpawns;
 		public int minDistBetweenEnemy;
 
