@@ -9,7 +9,6 @@ public class StairManager : MonoBehaviour {
 	//int maxStepCount = 12;
 	float objWidth = 6f;
 	int x = 0;
-	int y = 0;
 	int itemCount = 10;
 	public GameObject head;
 	void Start () {
