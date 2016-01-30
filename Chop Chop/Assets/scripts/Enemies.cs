@@ -44,10 +44,6 @@ public class Enemies : MonoBehaviour {
 		public Vector3 rotation;
 		public bool randBetweenStairs;
 
-<<<<<<< HEAD
-=======
-	
->>>>>>> 5c0c116e919efe7ae2a559625a89ee6d78b06c6d
 		public float durationBetweenSpawns;
 		public int minDistBetweenEnemy;
 
@@ -56,8 +52,4 @@ public class Enemies : MonoBehaviour {
 		[HideInInspector]
 		public int lastXSpawn;
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> 5c0c116e919efe7ae2a559625a89ee6d78b06c6d
 }
