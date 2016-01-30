@@ -9,7 +9,7 @@ public class StairManager : MonoBehaviour {
 	//int maxStepCount = 12;
 	float objWidth = 6f;
 	int x = 0;
-	int itemCount = 10;
+	int itemCount = 5;
 	public GameObject head;
 	void Start () {
 		stairs = new List<GameObject> ();
@@ -22,26 +22,27 @@ public class StairManager : MonoBehaviour {
 
 	void Update () {
 		x = (int)(head.transform.position.x / 1f);
+		if (x > 5) {
+			//step++;
+			/*foreach (GameObject stair in stairs) {
+				Vector3 pos = stair.transform.position;
+				pos.x = objWidth * x;
+				pos.y = -objWidth * x;
+				stair.transform.position = pos;
+			}*/
+			//if (step == maxStepCount) {
 
-		//step++;
-		/*foreach (GameObject stair in stairs) {
-			Vector3 pos = stair.transform.position;
-			pos.x = objWidth * x;
-			pos.y = -objWidth * x;
-			stair.transform.position = pos;
-		}*/
-		//if (step == maxStepCount) {
-
-		if (x % objWidth == 0) {
-			for (int i = -itemCount; i < itemCount; i++) {
-				stairs [i + itemCount].transform.position = new Vector3 (x + objWidth * i, -x - objWidth * i, 0);
+			if (x % objWidth == 0) {
+				for (int i = -itemCount; i < itemCount; i++) {
+					stairs [i + itemCount].transform.position = new Vector3 (x + objWidth * i, -x - objWidth * i, 0);
+				}
 			}
-		}
 
-			//topStair.transform.position = new Vector3 (5, -5, 0);
-			//stairs.Insert (9, topStair);
-			//step = 0;
-		//}
+				//topStair.transform.position = new Vector3 (5, -5, 0);
+				//stairs.Insert (9, topStair);
+				//step = 0;
+			//}
+		}
 	}
 
 	void LateUpdate() {
