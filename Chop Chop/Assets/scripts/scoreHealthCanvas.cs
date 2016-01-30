@@ -19,7 +19,7 @@ public class scoreHealthCanvas : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 			
-		score += 15 * Time.deltaTime;
+		score += 10 * Time.deltaTime;
 		VisualScore.text = Mathf.RoundToInt(score) + "";
 		if(healthLeft == 2) {
 			health3.gameObject.SetActive(false);
