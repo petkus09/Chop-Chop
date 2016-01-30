@@ -3,6 +3,11 @@ using System.Collections;
 
 public class playerControll : MonoBehaviour {
 
+
+	public float minHeigth = 2.5f;
+	public float maxheigth = 12f;
+	public ParticleSystem blood;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -10,9 +15,24 @@ public class playerControll : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		GetComponent<Rigidbody> ().AddForce (new Vector3 (0.5f * Time.deltaTime, 0, 0));
+
+
+
 		if (Input.GetKeyDown ("up")) {
-			GetComponent<Rigidbody> ().AddForce (new Vector3 (0,200,0));
+			GetComponent<Rigidbody> ().AddForce (new Vector3 (0,600,0));
+		}
+
+	}
+	void OnCollisionEnter(Collision col) {
+		GetComponent<Rigidbody> ().AddForce (new Vector3 (0, 250, 0));
+		blood.Emit (30);
+
+		if (col.gameObject.tag == "vaze") {
+			Instantiate (Resources.Load ("vazeCrash"), transform.position, transform.rotation);
+			Destroy (col.gameObject);
+		
 		}
 	}
+
+
 }
