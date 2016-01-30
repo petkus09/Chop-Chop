@@ -15,7 +15,9 @@ public class playerControll : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+
+
 		if (Input.GetKeyDown ("up")) {
 			GetComponent<Rigidbody> ().AddForce (new Vector3 (0,600,0));
 		}
@@ -25,6 +27,12 @@ public class playerControll : MonoBehaviour {
 		GetComponent<Rigidbody> ().AddForce (new Vector3 (0, 250, 0));
 		blood.Emit (30);
 
+		if (col.gameObject.tag == "vaze") {
+			Instantiate (Resources.Load ("vazeCrash"), transform.position, transform.rotation);
+			Destroy (col.gameObject);
+		
+		}
 	}
+
 
 }
