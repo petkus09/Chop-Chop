@@ -53,12 +53,17 @@ public class playerControll : MonoBehaviour {
 
     }
 	 public void OnTriggerEnter(Collider col) {
-		GameObject canvas = GameObject.Find ("score / health Canvas");
-		scoreHealthCanvas script = canvas.GetComponent<scoreHealthCanvas>();
-		script.healthLeft -= 1;
+		
 		blood.Emit (30);
+	
 
-
+		if (col.gameObject.tag == "vaze") {
+			Instantiate (Resources.Load ("vazeCrash"), transform.position, transform.rotation);
+			Destroy (col.gameObject);
+			GameObject canvas = GameObject.Find ("score / health Canvas");
+			scoreHealthCanvas script = canvas.GetComponent<scoreHealthCanvas>();
+			script.healthLeft -= 1;
+		}
 	} 
 
 
