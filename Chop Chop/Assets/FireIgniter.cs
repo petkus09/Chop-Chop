@@ -11,11 +11,13 @@ public class FireIgniter : MonoBehaviour
 //    public ParticleCollisionEvent[] collisionEvents;
     public int saveLength;
     private bool dealtDamage = false;
-    public ParticleSystem[] particlesOnDamage;
+    private ParticleSystem[] particlesOnDamage;
 
     // Use this for initialization
     void Start()
     {
+        GameObject headObjectFireParticles = GameObject.Find("HeadFireParticles");
+        particlesOnDamage = headObjectFireParticles.GetComponentsInChildren<ParticleSystem>();
 //        collisionEvents = new ParticleCollisionEvent[saveLength];
 //	    lifespan = Time.fixedTime;
     }
