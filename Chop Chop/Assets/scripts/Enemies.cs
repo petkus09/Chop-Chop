@@ -19,11 +19,11 @@ public class Enemies : MonoBehaviour {
 		pos.x -= objWidth / maxStepCount;
 		pos.y += objWidth / maxStepCount;
 		enemy.transform.position = pos;
-<<<<<<< HEAD
+ 
 		if (step == maxStepCount * 30) {
-=======
+
 		if (step == maxStepCount * 28) {
->>>>>>> 672f782d971cf93dfaaf57cb4505893a13e753db
+
 			Vector3 poss = enemy.transform.position;
 			poss.x = 16;
 			poss.y = -14;
@@ -33,6 +33,8 @@ public class Enemies : MonoBehaviour {
 		}
 	}
 
+	
+	}
 	void LateUpdate() {
 		Vector3.Distance (lastPosition, transform.position);
 		lastPosition = ga.transform.position;
