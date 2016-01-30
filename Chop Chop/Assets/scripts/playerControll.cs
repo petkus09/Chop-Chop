@@ -15,7 +15,11 @@ public class playerControll : MonoBehaviour {
 	void Update () {
 		
 		if (Input.GetKeyDown ("up")) {
-			GetComponent<Rigidbody> ().AddForce (new Vector3 (0,200,0));
+			GetComponent<Rigidbody> ().AddForce (new Vector3 (0,800,0));
 		}
+
+	}
+	void OnCollisionEnter(Collision col) {
+		GetComponent<Rigidbody> ().AddForce (new Vector3 (0, 200, 0));
 	}
 }
