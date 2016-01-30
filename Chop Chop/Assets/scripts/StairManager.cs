@@ -20,7 +20,7 @@ public class StairManager : MonoBehaviour {
 
 		stairs = new List<GameObject> ();
 		for (int i = 0; i < itemCount; i++) {
-			var a = (GameObject)Instantiate (stair, new Vector3 (objWidth * i, -objWidth * i, 0), Quaternion.Euler (new Vector3 (0, 90, 0)));
+			var a = (GameObject)Instantiate (stair, new Vector3 (objWidth * i, -objWidth * i, 0), Quaternion.Euler (new Vector3 (270, 270, 0)));
 			stairs.Add (a);
 		}
 		//head = (GameObject)Instantiate (head, new Vector3 (0, 1, 0), Quaternion.Euler (new Vector3 (0, 0, 0)));
