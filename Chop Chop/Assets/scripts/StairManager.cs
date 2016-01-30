@@ -10,10 +10,11 @@ public class StairManager : MonoBehaviour {
 	float objWidth = 6f;
 	int x = 0;
 	int y = 0;
+	int itemCount = 10;
 	public GameObject head;
 	void Start () {
 		stairs = new List<GameObject> ();
-		for (int i = -5; i < 5; i++) {
+		for (int i = -itemCount; i < itemCount; i++) {
 			var a = (GameObject)Instantiate (stair, new Vector3 (objWidth * i, -objWidth * i, 0), Quaternion.Euler (new Vector3 (0, 90, 0)));
 			stairs.Add (a);
 		}
@@ -33,8 +34,8 @@ public class StairManager : MonoBehaviour {
 		//if (step == maxStepCount) {
 
 		if (x % objWidth == 0) {
-			for (int i = -5; i < 5; i++) {
-				stairs [i + 5].transform.position = new Vector3 (x + objWidth * i, -x - objWidth * i, 0);
+			for (int i = -itemCount; i < itemCount; i++) {
+				stairs [i + itemCount].transform.position = new Vector3 (x + objWidth * i, -x - objWidth * i, 0);
 			}
 		}
 
