@@ -9,6 +9,7 @@ public class playerControll : MonoBehaviour {
 	public ParticleSystem blood;
 	private bool canJump = true;
 	public float maxVelocity = 30;
+    public float stoneCollisionMagnitudeThreshold = 10;
 
 	// Use this for initialization
 	void Start () {
@@ -30,12 +31,27 @@ public class playerControll : MonoBehaviour {
 		GetComponent<Rigidbody> ().AddForce (new Vector3 (0, 250, 0));
 		blood.Emit (30);
 		canJump = true;
-		if (col.gameObject.tag == "vaze") {
+	    float magnitude = col.relativeVelocity.magnitude;
+        if (col.gameObject.tag == "vaze") {
 			Instantiate (Resources.Load ("vazeCrash"), transform.position, transform.rotation);
 			Destroy (col.gameObject);
-
 		}
-	}
+	    if (col.gameObject.tag == "stone")
+	    {
+	        if (magnitude > stoneCollisionMagnitudeThreshold)
+	        {
+	            ParticleSystem stoneParticleSystem = col.gameObject.GetComponent<ParticleSystem>();
+	            if (stoneParticleSystem != null)
+	            {
+	                stoneParticleSystem.Stop();
+                    stoneParticleSystem.Play();
+	            }
+                // DO DAMAGE
+            }
+
+        }
+
+    }
 	 public void OnTriggerEnter(Collider col) {
 		GameObject canvas = GameObject.Find ("score / health Canvas");
 		scoreHealthCanvas script = canvas.GetComponent<scoreHealthCanvas>();
