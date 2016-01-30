@@ -6,7 +6,7 @@ public class StairManager : MonoBehaviour {
 	public GameObject stair;
 	List<GameObject> stairs;
 	int step = 0;
-	int maxStepCount = 120;
+	int maxStepCount = 12;
 	float objWidth = 6f;
 
 	//public GameObject head;
@@ -27,7 +27,7 @@ public class StairManager : MonoBehaviour {
 			pos.y += objWidth / maxStepCount;
 			stair.transform.position = pos;
 		}
-		if (step == maxStepCount - 1) {
+		if (step == maxStepCount) {
 			var topStair = stairs [0];
 			for (int i = -5; i < 5; i++) {
 				stairs [i + 5].transform.position = new Vector3 (objWidth * i, -objWidth * i, 0);
