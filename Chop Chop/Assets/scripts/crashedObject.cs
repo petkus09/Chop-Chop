@@ -16,7 +16,7 @@ public class crashedObject : MonoBehaviour {
 		if (timer <= 2) {
 			GetComponent<Rigidbody> ().drag = 3;
 			GetComponent<MeshCollider> ().enabled = false;
-			GetComponent<Rigidbody> ().AddForce(new Vector3 (0, transform.position.y -300 * Time.deltaTime, 0));
+
 
 		}
 		if (timer <= 0) {
