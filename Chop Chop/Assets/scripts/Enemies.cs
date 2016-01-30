@@ -16,7 +16,7 @@ public class Enemies : MonoBehaviour {
 		pos.x -= objWidth / maxStepCount;
 		pos.y += objWidth / maxStepCount;
 		enemy.transform.position = pos;
-		if (step == maxStepCount * 5) {
+		if (step == maxStepCount * 30) {
 			Vector3 poss = enemy.transform.position;
 			poss.x = 6;
 			poss.y = -4;
