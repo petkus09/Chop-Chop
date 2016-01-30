@@ -6,6 +6,9 @@ public class Enemies : MonoBehaviour {
 	int step = 0;
 	int maxStepCount = 2;
 	float objWidth = 1f;
+	public GameObject ga;
+
+	Vector3 lastPosition = Vector3.zero;
 	void Start () {
 		enemy = (GameObject)Instantiate (enemy, new Vector3 (16, -14, 0), Quaternion.Euler (new Vector3 (0, 0, 0)));
 	}
@@ -24,5 +27,10 @@ public class Enemies : MonoBehaviour {
 			enemy.transform.position = poss;
 			step = 0;
 		}
+	}
+
+	void LateUpdate() {
+		Vector3.Distance (lastPosition, transform.position);
+		lastPosition = ga.transform.position;
 	}
 }

@@ -5,11 +5,12 @@ using System.Collections.Generic;
 public class StairManager : MonoBehaviour {
 	public GameObject stair;
 	List<GameObject> stairs;
-	int step = 0;
-	int maxStepCount = 12;
+	//int step = 0;
+	//int maxStepCount = 12;
 	float objWidth = 6f;
-
-	//public GameObject head;
+	int x = 0;
+	int y = 0;
+	public GameObject head;
 	void Start () {
 		stairs = new List<GameObject> ();
 		for (int i = -5; i < 5; i++) {
@@ -20,32 +21,22 @@ public class StairManager : MonoBehaviour {
 	}
 
 	void Update () {
-		step++;
-		foreach (GameObject stair in stairs) {
+		x = (int)(head.transform.position.x / 1f);
+		y = (int)(head.transform.position.y / 1f);
+		//step++;
+		/*foreach (GameObject stair in stairs) {
 			Vector3 pos = stair.transform.position;
-			pos.x -= objWidth / maxStepCount;
-			pos.y += objWidth / maxStepCount;
+			pos.x = objWidth * x;
+			pos.y = -objWidth * x;
 			stair.transform.position = pos;
-		}
-		if (step == maxStepCount) {
-			var topStair = stairs [0];
+		}*/
+		//if (step == maxStepCount) {
 			for (int i = -5; i < 5; i++) {
-				stairs [i + 5].transform.position = new Vector3 (objWidth * i, -objWidth * i, 0);
+			stairs [i + 5].transform.position = new Vector3 (x + objWidth * i, -y - objWidth * i, 0);
 			}
 			//topStair.transform.position = new Vector3 (5, -5, 0);
 			//stairs.Insert (9, topStair);
-
-			//stairs.Remove(topStair);
-			//DestroyImmediate (stair, true);
-			//var a = (GameObject)Instantiate (stair, new Vector3 (5, -5, 0), Quaternion.Euler (new Vector3 (0, 0, 0)));
-			//stairs.Add (a);
-			step = 0;
-		}
-			
-		/*Vector3 poss = head.transform.position;
-		poss.x = 0;
-		poss.y = 1f + 1f / ((maxStepCount / 2) - (step - (maxStepCount / 2)));
-		poss.z = 0;
-		head.transform.position = poss;*/
+			//step = 0;
+		//}
 	}
 }
