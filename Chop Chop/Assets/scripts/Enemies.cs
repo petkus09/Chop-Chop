@@ -10,9 +10,6 @@ public class Enemies : MonoBehaviour {
 	int upFrontDist = 15;
 
 	void Update () {
-
-
-
 		x = (int)(head.transform.position.x / 1f);
 
 		if (x % objWidth == 0) {
@@ -43,8 +40,6 @@ public class Enemies : MonoBehaviour {
 		public Vector3 position;
 		public Vector3 rotation;
 		public bool randBetweenStairs;
-
-	
 		public float durationBetweenSpawns;
 		public int minDistBetweenEnemy;
 
@@ -53,5 +48,4 @@ public class Enemies : MonoBehaviour {
 		[HideInInspector]
 		public int lastXSpawn;
 	}
-
 }
