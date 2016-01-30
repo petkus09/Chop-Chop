@@ -7,13 +7,20 @@ public class StairManager : MonoBehaviour {
 	List<GameObject> stairs;
 	//int step = 0;
 	//int maxStepCount = 12;
-	float objWidth = 6f;
+	float objWidth = 40f;
 	int x = 0;
+<<<<<<< HEAD
+	int itemCount = 7;
+	int half;
+=======
 	int itemCount = 9;
+>>>>>>> 687bcfe9d4be78bbaf0afa2ff19ac3dca6e75868
 	public GameObject head;
 	void Start () {
+		half = (int)(itemCount / 2) + itemCount % 2;
+
 		stairs = new List<GameObject> ();
-		for (int i = -itemCount; i < itemCount; i++) {
+		for (int i = 0; i < itemCount; i++) {
 			var a = (GameObject)Instantiate (stair, new Vector3 (objWidth * i, -objWidth * i, 0), Quaternion.Euler (new Vector3 (0, 90, 0)));
 			stairs.Add (a);
 		}
@@ -22,7 +29,7 @@ public class StairManager : MonoBehaviour {
 
 	void Update () {
 		x = (int)(head.transform.position.x / 1f);
-		if (x > 5) {
+		if (x > 80) {
 			//step++;
 			/*foreach (GameObject stair in stairs) {
 				Vector3 pos = stair.transform.position;
@@ -33,8 +40,8 @@ public class StairManager : MonoBehaviour {
 			//if (step == maxStepCount) {
 
 			if (x % objWidth == 0) {
-				for (int i = -itemCount; i < itemCount; i++) {
-					stairs [i + itemCount].transform.position = new Vector3 (x + objWidth * i, -x - objWidth * i, 0);
+				for (int i = half - itemCount; i < half; i++) {
+					stairs [i + itemCount - half].transform.position = new Vector3 (x + objWidth * i, -x - objWidth * i, 0);
 				}
 			}
 
