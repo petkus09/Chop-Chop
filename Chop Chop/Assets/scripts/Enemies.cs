@@ -16,7 +16,10 @@ public class Enemies : MonoBehaviour {
 	int minDistBetweenEnemy = 10;
 
 	void Update () {
+<<<<<<< HEAD
 
+=======
+>>>>>>> b40cb3ffd144db26f3f36358d9c3b55140a6319b
 		x = (int)(head.transform.position.x / 1f);
 
 		/*step++;
@@ -79,7 +82,11 @@ public class Enemies : MonoBehaviour {
 		public Vector3 position;
 		public Vector3 rotation;
 		public bool randBetweenStairs;
+<<<<<<< HEAD
 }
 
 
+=======
+	}
+>>>>>>> b40cb3ffd144db26f3f36358d9c3b55140a6319b
 }
