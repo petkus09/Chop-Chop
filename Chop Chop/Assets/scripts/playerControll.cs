@@ -6,6 +6,8 @@ public class playerControll : MonoBehaviour {
 
 	public float minHeigth = 2.5f;
 	public float maxheigth = 12f;
+	public ParticleSystem blood;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -15,11 +17,14 @@ public class playerControll : MonoBehaviour {
 	void Update () {
 		
 		if (Input.GetKeyDown ("up")) {
-			GetComponent<Rigidbody> ().AddForce (new Vector3 (0,800,0));
+			GetComponent<Rigidbody> ().AddForce (new Vector3 (0,600,0));
 		}
 
 	}
 	void OnCollisionEnter(Collision col) {
-		GetComponent<Rigidbody> ().AddForce (new Vector3 (0, 200, 0));
+		GetComponent<Rigidbody> ().AddForce (new Vector3 (0, 250, 0));
+		blood.Emit (30);
+
 	}
+
 }
