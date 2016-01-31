@@ -21,12 +21,17 @@ public class Enemies : MonoBehaviour {
 					se.lastXSpawn = x;
 
 					Vector3 poss = new Vector3 ();
-					poss.x = x + objWidth + upFrontDist + se.position.x;
-					poss.y = -x - objWidth - upFrontDist + se.position.y;
+					if (!se.spawnInFront) {
+						poss.x = x + objWidth + upFrontDist + se.position.x;
+						poss.y = -x - objWidth - upFrontDist + se.position.y;
+					} else {
+						poss.x = x + objWidth - upFrontDist + se.position.x;
+						poss.y = -x - objWidth + upFrontDist + se.position.y;
+					}
 					poss.z += se.position.z;
 					if (se.randBetweenStairs)
-						poss.z = Random.Range (-1, 1);
-					
+						poss.z = Random.Range (-5, 5);
+
 					var a = Instantiate (se.prefab, poss, Quaternion.Euler (se.rotation));
 					Destroy (a, 15f);
 				}
@@ -43,6 +48,7 @@ public class Enemies : MonoBehaviour {
 
 		public float durationBetweenSpawns;
 		public int minDistBetweenEnemy;
+		public bool spawnInFront = false;
 
 		[HideInInspector]
 		public float nextSpawnTime;
